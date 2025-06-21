@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration Form</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS will be in a separate style tag or file -->
+     <link rel="stylesheet" href="style.css">
+     
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <div class="form-header">
+                <h2>Create Your Account</h2>
+                <p class="mb-0">Please fill in the details to register</p>
+            </div>
+
+            <div class="form-body">
+                <form id="registrationForm" novalidate>
+                    <!-- Full Name Field -->
+                    <div class="form-group">
+                        <label for="fullName" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="fullName" placeholder="Enter your full name">
+                        <div class="error-message" id="fullNameError">Name must be at least 5 characters long</div>
+                    </div>            
+<!-- Email Field -->
+<div class="form-group">
+    <label for="email" class="form-label">Email Address</label>
+    <input type="email" class="form-control" id="email" placeholder="Enter your email address">
+    <div class="error-message" id="emailError">Please enter a valid email address</div>
+</div>
+
+<!-- Phone Number Field -->
+<div class="form-group">
+    <label for="phoneNumber" class="form-label">Phone Number</label>
+    <input type="tel" class="form-control" id="phoneNumber" placeholder="Enter your 10-digit phone number">
+    <div class="error-message" id="phoneError">Please enter a valid 10-digit phone number</div>
+</div>
+
+<!-- Password Field -->
+<div class="form-group">
+    <label for="password" class="form-label">Password</label>
+    <div class="password-field-container">
+        <input type="password" class="form-control" id="password" placeholder="Create a strong password">
+        
+        <!-- Eye Toggle -->
+        <span class="password-toggle" id="passwordToggle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                <path d="M16 8s-3.5-5.5-8-5.5S0 8 0 8s3.5 5.5 8 5.5S16 8 16 8zm-8 3a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5z"/>
+            </svg>
+        </span>
+
+        <!-- Info Icon -->
+        <span class="password-info-icon" id="passwordInfo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14z"/>
+                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.153 1.319.808 1.319.545 0 1.042-.252 1.319-.808l.088-.416c.088-.416.416-.44.528-.176.176.352.24.528.528.528.264 0 .568-.208.568-.568 0-.352-.208-.56-.56-.56H8.14l.352-1.664.56-.07c.296-.032.488-.24.52-.488l.04-.352c.032-.312-.176-.576-.52-.608z"/>
+            </svg>
+        </span>
+
+        <!-- Tooltip -->
+        <div class="password-tooltip" id="passwordTooltip">
+            <p class="mb-1"><strong>Password requirements:</strong></p>
+            <ul>
+                <li>At least 8 characters long</li>
+                <li>Cannot be <code>password</code></li>
+                <li>Cannot be the same as your name</li>
+                <li>Should include uppercase and lowercase letters</li>
+                <li>Should include at least one number</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Strength Bar -->
+    <div class="password-strength">
+        <div class="strength-meter" id="strengthMeter"></div>
+    </div>
+
+    <!-- Error Message -->
+    <div class="error-message" id="passwordError">Password must be at least 8 characters long</div>
+</div>
+
+
+<!-- Confirm Password Field -->
+<div class="form-group">
+    <label for="confirmPassword" class="form-label">Confirm Password</label>
+    <div class="password-field-container">
+        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your password">
+        <span class="password-toggle" id="confirmPasswordToggle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                <path d="M16 8s-3.5-5.5-8-5.5S0 8 0 8s3.5 5.5 8 5.5S16 8 16 8z"/>
+                <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5z"/>
+            </svg>
+        </span>
+    </div>
+    <div class="error-message" id="confirmPasswordError">Passwords do not match</div>
+</div>
+
+<!-- Human Verification -->
+<div class="form-group">
+    <label for="captcha" class="form-label">Human Verification</label>
+    <div class="d-flex align-items-center mb-2">
+        <div id="captchaQuestion" class="me-2 fw-bold"></div>
+        <input type="number" class="form-control" id="captcha" placeholder="Enter answer">
+    </div>
+    <div class="error-message" id="captchaError">Please solve the math problem correctly</div>
+</div>
+
+<!-- Terms and Conditions -->
+<div class="form-check mb-4">
+    <input class="form-check-input" type="checkbox" id="termsCheck">
+    <label class="form-check-label" for="termsCheck">
+        I agree to the <a href="#" class="text-decoration-none">Terms and Conditions</a>
+    </label>
+    <div class="error-message" id="termsError">You must agree to the terms and conditions</div>
+</div>
+
+<!-- Submit Button -->
+<div class="d-grid">
+    <button type="submit" class="btn submit-btn">Create Account</button>
+</div>
+
+<!-- Success Message -->
+<div class="success-message" id="successMessage">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-check-circle-fill">
+        <path d="M16 8A8 8 0 1 0 8 8a8 8 0 0 0 16 0zm-3.03 3.75-.75.75-1.08-1.02L7.477 9.417 5.384 7.323a.75.75"/>
+    </svg>
+    <h5>Registration Successful</h5>
+    <p>Your account has been created successfully.</p>
+</div>
+        </div>
+    </form>
+</div>
+
+<!-- Bootstrap JS Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Custom JavaScript will be in a separate script tag or file -->
+<script src="script.js"></script>
+ 
+</body>
+</html>
